@@ -42,21 +42,29 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .btn:hover{background:var(--lime2)}
 .navlinks .btn{min-height:44px;font-size:15px;padding:0 18px}
 
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:48px 0 80px}
+.hero{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center;padding:48px 0 80px}
 .kick{font-size:13px;color:var(--muted)}
 .kick b{color:var(--lime)}
 h1{margin:18px 0 0;font-size:clamp(44px,6.2vw,84px);font-weight:700;letter-spacing:-.045em;line-height:.98}
 .lead{margin:22px 0 0;max-width:540px;font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:var(--soft)}
 form.join{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;max-width:540px}
-form.join input{flex:1 1 240px;min-width:0;min-height:52px;padding:0 18px;border-radius:14px;border:1.5px solid #2E2E33;background:var(--card);color:var(--text);font:16px "Space Grotesk",sans-serif}
-form.join input::placeholder{color:#71717A}
-form.join input:focus{outline:2px solid var(--lime);outline-offset:1px}
+form.join input[type=email]{flex:1 1 240px;min-width:0;min-height:52px;padding:0 18px;border-radius:14px;border:1.5px solid #2E2E33;background:var(--card);color:var(--text);font:16px "Space Grotesk",sans-serif}
+form.join input[type=email]::placeholder{color:#71717A}
+form.join input[type=email]:focus{outline:2px solid var(--lime);outline-offset:1px}
 .note{margin-top:14px;font-size:14px;color:var(--muted)}
 .msg{margin-top:12px;font-size:15px;font-weight:600;min-height:1.2em}
 
-.reel{position:relative;justify-self:center;width:min(100%,380px);aspect-ratio:9/16;border-radius:34px;overflow:hidden;border:3px solid var(--lime);box-shadow:0 0 30px rgba(198,244,50,.35),0 40px 100px rgba(0,0,0,.6);background:#000}
+.reel{position:relative;width:100%;aspect-ratio:16/9;border-radius:24px;overflow:hidden;border:2px solid #2E2E33;box-shadow:0 0 0 1px rgba(198,244,50,.12),0 40px 100px rgba(0,0,0,.6);background:#000}
 .reel video{display:block;width:100%;height:100%;object-fit:cover}
-.sound{position:absolute;right:14px;bottom:14px;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:12px;border:1.5px solid rgba(198,244,50,.6);background:rgba(11,11,12,.8);color:var(--text);font:700 12px "Space Mono",monospace;letter-spacing:.12em;cursor:pointer}
+.bonus{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:10px 14px;border-radius:12px;border:1.5px solid rgba(198,244,50,.5);background:rgba(198,244,50,.08);font-size:15px;font-weight:600;color:var(--text)}
+.bonus b{color:var(--lime)}
+.device{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0;padding:0;border:0;flex-basis:100%}
+.device legend{float:left;margin-right:4px;font-size:15px;font-weight:600;color:var(--soft)}
+.device label{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid #2E2E33;background:var(--card);font-size:15px;font-weight:600;cursor:pointer}
+.device input{position:absolute;opacity:0;width:1px;height:1px}
+.device label:has(input:checked){border-color:var(--lime);box-shadow:0 0 0 1px var(--lime) inset}
+.device label:has(input:focus-visible){outline:2px solid var(--lime);outline-offset:2px}
+.device svg{flex-shrink:0}
 
 .banks{padding:26px 0 70px;border-top:1px solid #1F1F23;text-align:center}
 .banks .mono{font-size:12px;color:var(--dim)}
@@ -106,8 +114,14 @@ details p{margin:10px 0 0;font-size:15px;line-height:1.55;color:var(--muted)}
 .cta h2{margin-top:16px;font-size:clamp(32px,4.4vw,56px);line-height:1}
 .cta p{margin:14px auto 0;max-width:520px;font-size:17px;line-height:1.5}
 .cta form.join{justify-content:center;margin:26px auto 0}
-.cta form.join input{background:#fff;color:var(--bg);border-color:var(--bg)}
-.cta form.join input:focus{outline-color:var(--bg)}
+.cta form.join input[type=email]{background:#fff;color:var(--bg);border-color:var(--bg)}
+.cta .device{justify-content:center}
+.cta .device legend{color:var(--bg)}
+.cta .device label{background:#fff;border-color:rgba(11,11,12,.35);color:var(--bg)}
+.cta .device label:has(input:checked){border-color:var(--bg);box-shadow:0 0 0 1px var(--bg) inset}
+.cta .bonus{border-color:rgba(11,11,12,.4);background:rgba(11,11,12,.06);color:var(--bg)}
+.cta .bonus b{color:var(--bg)}
+.cta form.join input[type=email]:focus{outline-color:var(--bg)}
 .cta .btn{background:var(--bg);color:var(--lime)!important}
 .cta .btn:hover{background:#26262B}
 
@@ -120,7 +134,7 @@ footer a{color:var(--muted)}
 
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;gap:40px;padding-top:24px}
-  .reel{width:min(78%,340px)}
+  .reel{justify-self:center;width:min(78%,340px);aspect-ratio:9/16;border-radius:30px}
   .cards,.pgrid{grid-template-columns:1fr}
   .navlinks a:not(.btn){display:none}
   .privacy{padding:28px 22px}
@@ -152,23 +166,25 @@ footer a{color:var(--muted)}
     <main>
       <section class="hero" id="top">
         <div class="in">
-          <div class="kick mono"><b>●</b> COMING SOON ON ANDROID · UAE</div>
+          <div class="kick mono"><b>●</b> COMING SOON · BUILT FOR THE UAE</div>
           <h1>Know what you can <span class="glow">spend today.</span></h1>
           <p class="lead">SpendSure reads your bank texts, sets aside your bills and savings, and gives you one number for each day. No typing, no spreadsheets.</p>
+          <div class="bonus"><b>WAITLIST BONUS</b> 2 months of Pro, free</div>
           <form class="join" novalidate>
+            <fieldset class="device">
+              <legend>I use</legend>
+              <label><input type="radio" name="PLATFORM" value="Android" required><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10h10v8a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1zM7 9a5 5 0 0 1 10 0zM9.5 6.5 8.5 4.5M14.5 6.5l1-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Android</label>
+              <label><input type="radio" name="PLATFORM" value="iPhone"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>iPhone</label>
+            </fieldset>
             <label class="sr" for="email1">Email address</label>
             <input id="email1" name="EMAIL" type="email" autocomplete="email" placeholder="you@email.com" required>
             <button class="btn" type="submit">Join the waitlist</button>
           </form>
           <div class="msg" role="status" aria-live="polite"></div>
-          <div class="note">No bank login. Your money data stays on your phone.</div>
+          <div class="note">Android first, iPhone on the way. No bank login. Your money data stays on your phone.</div>
         </div>
         <div class="reel in" style="animation-delay:.15s">
-          <video id="reel" src="assets/spendsure-privacy.mp4" poster="assets/spendsure-privacy-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="20-second SpendSure video: no bank login, no passwords, no account; it still works with the internet off"></video>
-          <button class="sound" id="sound" type="button" aria-pressed="false">
-            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path id="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".35"/></svg>
-            <span id="soundLabel">SOUND ON</span>
-          </button>
+          <video id="reel" autoplay muted loop playsinline preload="metadata" aria-label="34-second SpendSure video: your bank texts, SpendSure writes it down, and shows what you can spend today"></video>
         </div>
       </section>
 
@@ -232,16 +248,22 @@ footer a{color:var(--muted)}
         <h2 id="faq-h">Questions</h2>
         <details><summary>Which banks does it work with?<span class="plus" aria-hidden="true">+</span></summary><p>Emirates NBD, ADCB, FAB, Mashreq, Emirates Islamic, Dubai Islamic Bank, Liv and Dubai First. More are on the way, and you can <a href="mailto:hello@spendsure.app?subject=Please%20add%20my%20bank">ask for yours</a>.</p></details>
         <details><summary>Does it need the internet?<span class="plus" aria-hidden="true">+</span></summary><p>No. Bank texts arrive over the phone network, and SpendSure works them out on your phone, so it keeps working with Wi-Fi and mobile data switched off.</p></details>
-        <details><summary>Is it free?<span class="plus" aria-hidden="true">+</span></summary><p>Early access is free. We'll share pricing well before launch, and everyone on the waitlist hears first.</p></details>
-        <details><summary>What about iPhone?<span class="plus" aria-hidden="true">+</span></summary><p>Android comes first. iPhone is on the way. Join the list and we'll tell you when it's ready.</p></details>
+        <details><summary>Is it free?<span class="plus" aria-hidden="true">+</span></summary><p>You can start for free. Everyone who joins the waitlist gets their first 2 months of Pro free when we launch, and we'll share pricing well before then.</p></details>
+        <details><summary>What about iPhone?<span class="plus" aria-hidden="true">+</span></summary><p>Android comes first and iPhone is on the way. Pick iPhone when you join the waitlist and we'll tell you the moment it's ready, with the same 2 free months of Pro.</p></details>
         <details><summary>What happens to my leftover money?<span class="plus" aria-hidden="true">+</span></summary><p>On payday, whatever is left of last month moves to your savings, and you get one message saying how much you saved.</p></details>
       </section>
 
       <section class="cta" id="join" aria-labelledby="join-h">
         <svg width="64" height="64" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#0B0B0C"/><path d="M62 37C59 30 52 28 47 28C39 28 35 33 35 39C35 46 41 48 50 50C59 52 65 55 65 62C65 69 59 73 50 73C43 73 37 70 35 64" fill="none" stroke="#C6F432" stroke-width="12" stroke-linecap="round"/></svg>
         <h2 id="join-h">Be first to know what you can spend today.</h2>
-        <p>Join the early-access list. We'll email you when SpendSure is ready on Android. No spam.</p>
+        <p>Join the early-access list and get your first 2 months of Pro free. We'll email you when SpendSure is ready on your phone. No spam.</p>
+        <div class="bonus"><b>WAITLIST BONUS</b> 2 months of Pro, free</div>
         <form class="join" novalidate>
+          <fieldset class="device">
+            <legend>I use</legend>
+            <label><input type="radio" name="PLATFORM" value="Android" required><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10h10v8a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1zM7 9a5 5 0 0 1 10 0zM9.5 6.5 8.5 4.5M14.5 6.5l1-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Android</label>
+            <label><input type="radio" name="PLATFORM" value="iPhone"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>iPhone</label>
+          </fieldset>
           <label class="sr" for="email2">Email address</label>
           <input id="email2" name="EMAIL" type="email" autocomplete="email" placeholder="you@email.com" required>
           <button class="btn" type="submit">Join the waitlist</button>
@@ -266,15 +288,22 @@ document.querySelectorAll("form.join").forEach((form) => {
   const msg = form.parentElement.querySelector(".msg");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const input = form.querySelector("input");
+    const input = form.querySelector("input[type=email]");
     const email = input.value.trim();
+    const picked = form.querySelector("input[name=PLATFORM]:checked");
+    if (!picked) {
+      msg.textContent = "Please choose Android or iPhone.";
+      form.querySelector("input[name=PLATFORM]").focus();
+      return;
+    }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       msg.textContent = "Please enter a valid email address.";
       input.focus();
       return;
     }
+    const platform = picked.value;
     if (!WAITLIST_ACTION) {
-      location.href = "mailto:hello@spendsure.app?subject=" + encodeURIComponent("Add me to the SpendSure waitlist") + "&body=" + encodeURIComponent(email);
+      location.href = "mailto:hello@spendsure.app?subject=" + encodeURIComponent("Add me to the SpendSure waitlist (" + platform + ")") + "&body=" + encodeURIComponent("Email: " + email + "\nPhone: " + platform);
       return;
     }
     const btn = form.querySelector("button");
@@ -282,10 +311,11 @@ document.querySelectorAll("form.join").forEach((form) => {
     try {
       const data = new FormData();
       data.append("EMAIL", email);
+      data.append("PLATFORM", platform);
       data.append("email_address_check", "");
       data.append("locale", "en");
       await fetch(WAITLIST_ACTION, { method: "POST", body: data, mode: "no-cors" });
-      msg.textContent = "You're on the list. We'll email you when it's ready.";
+      msg.textContent = "You're on the list, with 2 months of Pro free. We'll email you when it's ready on " + platform + ".";
       form.reset();
     } catch (err) {
       msg.textContent = "Something went wrong. Please try again, or email hello@spendsure.app.";
@@ -294,15 +324,19 @@ document.querySelectorAll("form.join").forEach((form) => {
   });
 });
 
-// Sound toggle for the video (browsers only autoplay muted video)
-const video = document.getElementById("reel"), sound = document.getElementById("sound");
-sound.addEventListener("click", () => {
-  video.muted = !video.muted;
-  if (!video.muted) { video.currentTime = 0; video.play(); }
-  sound.setAttribute("aria-pressed", String(!video.muted));
-  document.getElementById("soundLabel").textContent = video.muted ? "SOUND ON" : "SOUND OFF";
-  document.getElementById("wave").setAttribute("opacity", video.muted ? ".35" : "1");
-});
+// Ad 1: the wide cut on computers, the tall cut on phones (silent; it loops)
+const reel = document.getElementById("reel");
+const tall = window.matchMedia("(max-width: 900px)");
+const pickReel = () => {
+  const name = tall.matches ? "ad1-vertical" : "ad1-landscape";
+  if (reel.dataset.cut === name) return;
+  reel.dataset.cut = name;
+  reel.poster = "assets/" + name + "-poster.jpg";
+  reel.src = "assets/" + name + ".mp4";
+  reel.play().catch(() => {});
+};
+pickReel();
+tall.addEventListener("change", pickReel);
 </script>
 </body>
 </html>
